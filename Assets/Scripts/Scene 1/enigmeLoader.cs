@@ -63,4 +63,23 @@ public class enigmeLoader : MonoBehaviour
                 break;
         }
     }
+    public void DespawnEnigmeButton(Text name)
+    {
+        switch (name.text)
+        {
+            case "Matteo":
+                if (Enigme2.isCorrect)
+                {
+
+                }
+                break;
+            case "Nina":
+                SceneManager.LoadScene("Enigme3");
+                break;
+            case "Nathalie":
+                //Condition Énigme fille ok
+                SceneManager.LoadScene("Enigme4");
+                break;
+        }
+    }
 }

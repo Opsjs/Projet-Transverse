@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -14,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
 
     public static DialogueManager instance;
+
+    [SerializeField] Button answerButton;
 
     public bool InDialogue = false;
     private void Awake()
@@ -35,6 +38,44 @@ public class DialogueManager : MonoBehaviour
         InDialogue = true;
 
         nameText.text = dialogue.name;
+
+        switch (nameText.text)
+        {
+            case "Matteo":
+                if (!Enigme2.isCorrect)
+                {
+                    answerButton.gameObject.SetActive(true);
+                } else
+                {
+                    answerButton.gameObject.SetActive(false);
+                }
+                break;
+            case "Nina":
+                if (!Enigme3.isCorrect)
+                {
+                    answerButton.gameObject.SetActive(true);
+                }
+                else
+                {
+                    answerButton.gameObject.SetActive(false);
+                }
+                //SceneManager.LoadScene("Enigme3");
+                break;
+            case "Nathalie":
+                if (!Enigme4.isCorrect)
+                {
+                    answerButton.gameObject.SetActive(true);
+                }
+                else
+                {
+                    answerButton.gameObject.SetActive(false);
+                }
+                //Condition Énigme fille ok
+                //SceneManager.LoadScene("Enigme4");
+                break;
+        }
+
+
 
         sentences.Clear();
 
