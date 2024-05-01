@@ -4,28 +4,32 @@ using UnityEngine;
 
 public static class Collectibles
 {
-    public static bool IsLugeCollected;
-    public static bool IsPullCollected;
-    public static bool IsPostalCardCollected;
-    public static bool IsLogoJoCollected;
-    public static bool IsMedalCollected;
+    public static bool IsCollectedTrophy = false;
+    public static bool IsCollectedMedal = false;
+    public static bool IsCollectedPostalCard = false;
+    public static bool IsCollectedHoodie = false;
+    public static bool IsCollectedLuge = false;
 }
 
 public class CollectiblePickup : MonoBehaviour
 {
     public Dialogue dialogue;
+/*    [SerializeField] GameObject trophy;
+    [SerializeField] GameObject medal;
+    [SerializeField] GameObject postalCard;
+    [SerializeField] GameObject hoodie;
+    [SerializeField] GameObject luge;*/
     private void Start()
     {
-        Collectibles.IsLugeCollected = false;
-        Collectibles.IsPullCollected = false;
-        Collectibles.IsPostalCardCollected = false;
-        Collectibles.IsLogoJoCollected = false;
-        Collectibles.IsMedalCollected = false;
+/*        if (!Collectibles.IsCollectedTrophy)
+        {
+            trophy.SetActive(false);
+        }*/
     }
     public void OnMouseDown()
     {
         TriggerPickUp();
-        if(Collectibles.IsPullCollected && Collectibles.IsLugeCollected && Collectibles.IsMedalCollected && Collectibles.IsLogoJoCollected && Collectibles.IsPostalCardCollected)
+        if(Collectibles.IsCollectedHoodie && Collectibles.IsCollectedLuge && Collectibles.IsCollectedMedal && Collectibles.IsCollectedTrophy && Collectibles.IsCollectedPostalCard)
         {
             Debug.Log("All Collectibles Found !");
         }
@@ -36,38 +40,38 @@ public class CollectiblePickup : MonoBehaviour
         switch (tag)
         {
             case "Luge":
-                if (!Collectibles.IsLugeCollected)
+                if (!Collectibles.IsCollectedLuge)
                 {
                     CollectibleManager.instance.StartPopUp(dialogue);
-                    Collectibles.IsLugeCollected = true;
+                    Collectibles.IsCollectedLuge = true;
                 }
                 break;
             case "Pull":
-                if (!Collectibles.IsPullCollected)
+                if (!Collectibles.IsCollectedHoodie)
                 {
                     CollectibleManager.instance.StartPopUp(dialogue);
-                    Collectibles.IsPullCollected = true;
+                    Collectibles.IsCollectedHoodie = true;
                 }
                 break;
             case "PostalCard":
-                if (!Collectibles.IsPostalCardCollected)
+                if (!Collectibles.IsCollectedPostalCard)
                 {
                     CollectibleManager.instance.StartPopUp(dialogue);
-                    Collectibles.IsPostalCardCollected = true;
+                    Collectibles.IsCollectedPostalCard = true;
                 }
                 break;
             case "LogoJo":
-                if (!Collectibles.IsLogoJoCollected)
+                if (!Collectibles.IsCollectedTrophy)
                 {
                     CollectibleManager.instance.StartPopUp(dialogue);
-                    Collectibles.IsLogoJoCollected = true;
+                    Collectibles.IsCollectedTrophy = true;
                 }
                 break;
             case "Medal":
-                if (!Collectibles.IsMedalCollected)
+                if (!Collectibles.IsCollectedMedal)
                 {
                     CollectibleManager.instance.StartPopUp(dialogue);
-                    Collectibles.IsMedalCollected = true;
+                    Collectibles.IsCollectedMedal = true;
                 }
                 break;
         }

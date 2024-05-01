@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnigmeHolder : MonoBehaviour
 {
     [SerializeField] GameObject icon;
+    [SerializeField] GameObject keyPart;
     private enum Enigmes
     {
         Enigme1,
@@ -23,6 +24,7 @@ public class EnigmeHolder : MonoBehaviour
                 {
                     GameObject.Destroy(icon);
                     Debug.Log($"Énigme 1 résolue");
+                    keyPart.SetActive(true);
                 }
                 break;
             case Enigmes.Enigme2:
@@ -30,6 +32,7 @@ public class EnigmeHolder : MonoBehaviour
                 {
                     GameObject.Destroy(icon);
                     Debug.Log($"Énigme 2 résolue");
+                    keyPart.SetActive(true);
                 }
                 break;
             case Enigmes.Enigme3:
@@ -37,6 +40,7 @@ public class EnigmeHolder : MonoBehaviour
                 {
                     GameObject.Destroy(icon);
                     Debug.Log($"Énigme 3 résolue");
+                    keyPart.SetActive(true);
                 }
                 break;
             case Enigmes.Enigme4:
@@ -44,6 +48,7 @@ public class EnigmeHolder : MonoBehaviour
                 {
                     GameObject.Destroy(icon);
                     Debug.Log($"Énigme 4 résolue");
+                    keyPart.SetActive(true);
                 }
                 break;
         }

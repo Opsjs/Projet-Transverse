@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class enigmeLoader : MonoBehaviour
 {
+    private Cameracontrol cameracontrol;
     public enum Enigmes {
         Enigme1,
         Enigme2, 
@@ -13,23 +14,32 @@ public class enigmeLoader : MonoBehaviour
         Enigme4
     }
     [SerializeField] string EnigmeName;
+    private void Start()
+    {
+         cameracontrol = FindObjectOfType<Cameracontrol>();
+    }
     private void OnMouseDown()
     {
         switch (EnigmeName)
         {
             case "MainScene":
                 SceneManager.LoadScene("MainScene");
+                //Camera.main.transform.position = cameracontrol.position;
                 break;
             case "Enigme1":
+                cameracontrol.position = Camera.main.transform.position;
                 SceneManager.LoadScene("Enigme1");
                 break;
             case "Enigme2":
+                cameracontrol.position = Camera.main.transform.position;
                 SceneManager.LoadScene("Enigme2");
                 break;
             case "Enigme3":
+                cameracontrol.position = Camera.main.transform.position;
                 SceneManager.LoadScene("Enigme3");
                 break;
             case "Enigme4":
+                cameracontrol.position = Camera.main.transform.position;
                 SceneManager.LoadScene("Enigme4");
                 break;
             default:

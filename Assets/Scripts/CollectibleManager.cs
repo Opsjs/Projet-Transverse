@@ -13,7 +13,14 @@ public class CollectibleManager : MonoBehaviour
 
     public static CollectibleManager instance;
 
-    private bool InPopUp;
+    [Header("Collectibles")]
+    [SerializeField] GameObject trophy;
+    [SerializeField] GameObject medal;
+    [SerializeField] GameObject postalCard;
+    [SerializeField] GameObject hoodie;
+    [SerializeField] GameObject luge;
+
+
 
     private void Awake()
     {
@@ -23,15 +30,39 @@ public class CollectibleManager : MonoBehaviour
         }
         instance = this;
     }
+
+    private void Start()
+    {
+        if (Collectibles.IsCollectedTrophy)
+        {
+            trophy.SetActive(false);
+        }
+        if (Collectibles.IsCollectedLuge)
+        {
+            luge.SetActive(false);
+        }
+        if (Collectibles.IsCollectedMedal)
+        {
+            medal.SetActive(false);
+        }
+        if (Collectibles.IsCollectedHoodie)
+        {
+            hoodie.SetActive(false);
+        }
+        if (Collectibles.IsCollectedPostalCard)
+        {
+            postalCard.SetActive(false);
+        }
+    }
     public void StartPopUp(Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
-        InPopUp= true;
         content.text = dialogue.sentences[0];
     }
     public void EndPopUp()
     {
-        InPopUp= false;
+
         animator.SetBool("IsOpen", false);
     }
+    
 }
